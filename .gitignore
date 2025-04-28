@@ -1,0 +1,74 @@
+# WordPress core
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+wp-content/backups/
+wp-content/backup-db/
+wp-content/blogs.dir/
+wp-content/upgrade/
+wp-content/object-cache.php
+wp-content/mysql.sql
+
+# Plugins
+wp-content/plugins/hello.php
+wp-content/mu-plugins/
+
+# Themes
+wp-content/themes/*/
+!wp-content/themes/your-theme/
+
+# Media files
+*.hqx
+*.bin
+*.exe
+*.dll
+*.deb
+*.dmg
+*.iso
+*.img
+*.msi
+*.msp
+*.msm
+*.mid
+*.midi
+*.kar
+*.mp3
+*.ogg
+*.m4a
+*.ra
+*.3gpp
+*.3gp
+*.mp4
+*.mpeg
+*.mpg
+*.mov
+*.webm
+*.flv
+*.m4v
+*.mng
+*.asx
+*.asf
+*.wmv
+*.avi
+
+# Other
+.DS_Store
+.htaccess
+license.txt
+readme.html
+sitemap.xml
+sitemap.xml.gz
+
+# Logs
+*.log
+
+# IDE and editor files
+*.sublime-project
+*.sublime-workspace
+*.idea
+*.vscode
+Thumbs.db
+
+.env
