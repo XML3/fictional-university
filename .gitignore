@@ -72,3 +72,7 @@ sitemap.xml.gz
 Thumbs.db
 
 .env
+
+# Ignore ACF plugin files
+app/public/wp-content/plugins/advanced-custom-fields/
+
