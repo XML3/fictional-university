@@ -80,3 +80,5 @@ app/public/wp-content/plugins/regenerate-thumbnails/
 app/public/wp-content/uploads
 
 
+node_modules/
+**/node_modules/
