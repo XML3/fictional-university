@@ -30,7 +30,8 @@ function pageBanner($args = NULL) {
 
 function university_files()
 {
-    // wp_enqueue_script('googleMap', '//maps.googleapis.com/maps/api/js?key=Api key goes here', NULL, '1.0', true);
+    $google_maps_key = GOOGLE_MAPS_KEY;
+    wp_enqueue_script('googleMap', '//maps.googleapis.com/maps/api/js?key=' . $google_maps_key, NULL, '1.0', true);
     wp_enqueue_script('main-university-js', get_theme_file_uri('/build/index.js'), array('jquery'), '1.0', true);
     wp_enqueue_style('font-awesonme', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
     wp_enqueue_style('custom-google-fonts', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
@@ -52,10 +53,14 @@ add_action('after_setup_theme', 'university_features');
 
 function university_adjust_queries($query)
 {
-    if (!is_admin() AND is_post_type_archive('program') AND is_main_query()) {
+    if (!is_admin() AND is_post_type_archive('campus') AND $query->is_main_query()) {
+        $query->set('posts_per_page', -1);
+    }
+    
+    if (!is_admin() AND is_post_type_archive('program') AND $query->is_main_query()) {
         $query->set('orderby', 'title');
         $query->set('order', 'ASC');
-        $query->set('post_per_page', -1);
+        $query->set('posts_per_page', -1);
     }
 
     if (!is_admin() and is_post_type_archive('event') and $query->is_main_query()) {
@@ -76,10 +81,9 @@ function university_adjust_queries($query)
 
 add_action('pre_get_posts', 'university_adjust_queries');
 
-//This was not set in google's api. It requires billing information.
-// function universityMapKey ($api) {
-//     $api['key'] = 'PasteYourAPIKeyFromGoogleHere';
-//     return $api;
-// }
+function universityMapKey ($api) {
+    $api['key'] = GOOGLE_MAPS_KEY;
+    return $api;
+}
 
-// add_filter('acf/fields/google_map/api', 'universityMapKey');
+add_filter('acf/fields/google_map/api', 'universityMapKey');
